@@ -1,0 +1,30 @@
+<h1><?= isset($item) ? "Editar Vehículo" : "Agregar Vehículo" ?></h1>
+
+<form method="POST" action="router.php?controller=items&action=<?= isset($item) ? 'update&id=' . $item['id'] : 'store' ?>">
+    
+    <label for="modelo">Modelo:</label>
+    <input type="text" name="modelo" value="<?= isset($item) ? $item['modelo'] : '' ?>" required><br>
+
+    <label for="anio">Año:</label>
+    <input type="number" name="anio" value="<?= isset($item) ? $item['anio'] : '' ?>" required><br>
+
+    <label for="precio">Precio:</label>
+    <input type="number" step="0.01" name="precio" value="<?= isset($item) ? $item['precio'] : '' ?>" required><br>
+
+    <label for="kilometraje">Kilometraje:</label>
+    <input type="number" name="kilometraje" value="<?= isset($item) ? $item['kilometraje'] : '' ?>" required><br>
+
+    <label for="descripcion">Descripción:</label>
+    <textarea name="descripcion" required><?= isset($item) ? $item['descripcion'] : '' ?></textarea><br>
+
+    <label for="id_categoria">Categoría:</label>
+    <select name="id_categoria" required>
+        <?php foreach ($categorias as $categoria): ?>
+            <option value="<?= $categoria['id'] ?>" <?= isset($item) && $item['id_categoria'] == $categoria['id'] ? 'selected' : '' ?>>
+                <?= $categoria['nombre'] ?>
+            </option>
+        <?php endforeach; ?>
+    </select><br>
+
+    <button type="submit"><?= isset($item) ? "Guardar Cambios" : "Agregar Vehículo" ?></button>
+</form>

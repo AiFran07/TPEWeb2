@@ -1,0 +1,26 @@
+<!-- vistas/categorias.phtml -->
+<h2>Listado de Categorías</h2>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($categorias as $categoria): ?>
+            <tr>
+                <td><?= $categoria['id']; ?></td>
+                <td><?= $categoria['nombre']; ?></td>
+                <td>
+                    <a href="router.php?controller=categorias&action=edit&id=<?= $categoria['id']; ?>">Editar</a> |
+                    <a href="router.php?controller=categorias&action=delete&id=<?= $categoria['id']; ?>">Eliminar</a>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<a href="router.php?controller=categorias&action=create">Agregar Nueva Categoría</a>

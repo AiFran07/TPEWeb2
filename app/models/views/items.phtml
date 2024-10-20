@@ -1,0 +1,11 @@
+<!-- views/items.phtml -->
+<h1>Listado de Vehículos</h1>
+<ul>
+    <?php foreach ($items as $item): ?>
+        <li>
+            <a href="router.php?controller=items&action=show&id=<?= $item['id'] ?>">
+                <?= htmlspecialchars($item['nombre']) ?> - $<?= htmlspecialchars($item['precio']) ?>
+            </a>
+        </li>
+    <?php endforeach; ?>
+</ul>
